@@ -1,0 +1,97 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+
+
+int noOfComparison=0;
+int noOfSwap=0;
+
+ void swap(int *arr,int i,int j){
+
+ int temp = arr[i];
+ arr[i]  =  arr[j];
+ arr[j] = temp;
+
+
+ }
+
+  int partition(int *arr,int l,int r) {
+   int i=l-1;
+   int j=l;
+
+   int pivot = arr[r];
+
+   for(j=l;j<r;j++){
+     if(arr[j] <= pivot){
+      i++;
+      swap(arr,i,j);
+
+     }
+
+   }
+
+    swap(arr,i+1,r);
+
+    return (i+1);
+
+  }
+
+  void quickSort( int *arr,int l,int r){
+
+
+   if(l<r){
+
+      int m = partition(arr,l,r);
+      quickSort(arr,l,m-1);
+      quickSort(arr,m+1,r);
+
+
+
+  }
+
+
+  }
+
+
+
+int main(){
+
+
+
+        int size;
+	cout<<"\nenter the size of array \n";
+	cin>>size;
+
+        int *arr = new int[size];
+
+
+        int temp = size;
+
+
+        for(int i=0;i<size;i++){
+
+          arr[i] = temp;
+
+           temp--;
+
+        }
+
+        cout<<"\n the given array is:";
+         for(int i=0;i<size;i++){
+          cout<<arr[i]<<" ";
+
+        }
+
+
+        quickSort(arr,0,size-1);
+
+         cout<<"\n the given array after applying merge sort is:";
+         for(int i=0;i<size;i++){
+          cout<<arr[i]<<" ";
+
+        }
+	return 0;
+
+}
+
+
